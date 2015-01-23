@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Torschlusspanik</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string"> Angst, etwas zu verpassen</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcTCLnE6bLRXJw_dQ09z_KNi93zP1FpbWvI_BcuZNcS-ATrweOpaK-_3KQ</pair>
+                    <pair name="width" type="number">116</pair>
+                    <pair name="height" type="number">116</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">Geht auf das Mittelalter zurück, in dem die Stadttore bei Anbruch der Dunkelheit aus Sicherheitsgründen geschlossen („Torschluss“) wurden</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcSadVC1FvP0u8E1ey9z8iiGNUxxsSXdOM_2SeaZO-ixAyAkXH1bRxd7lqg</pair>
+                    <pair name="width" type="number">116</pair>
+                    <pair name="height" type="number">79</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+    <pair name="links" type="array"/>
+</json>

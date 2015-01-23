@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Schlamper</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="2" type="object">
+            <pair name="title" type="string">Achtung!</pair>
+            <pair name="id" type="number">4</pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">[schwäb.]</pair>
+                    <pair name="id" type="number">5</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcTMtgef4aArbt3xYYN-S3JJQ8vYOhefMZIuGopG8bkzNLe2gjsCinGzJCc4</pair>
+                            <pair name="width" type="number">138</pair>
+                            <pair name="height" type="number">138</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcQ0KKfQSbh9DC6DX9wjs7W18Kz76z3UqmKz7kcxqPGoA5nnn79JVpe93MEm</pair>
+                    <pair name="width" type="number">130</pair>
+                    <pair name="height" type="number">110</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="-10" type="object">
+            <pair name="title" type="string">[schwäb.] Person, die unsauber arbeiten oder sich nicht organisieren können</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcTbnxf2KtBmnS5Bgqus2G78bvX4maPlW2N-_HfYMp4cGO8QrCAcw2B7IJgG</pair>
+                    <pair name="width" type="number">143</pair>
+                    <pair name="height" type="number">107</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+                <pair name="position" type="array">
+                    <item type="number">191</item>
+                    <item type="number">74.5</item>
+                    <item type="number">1</item>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="-5" type="object">
+            <pair name="title" type="string">Personen, die »schlampig« arbeiten</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcQkuspS4qWHFHmFDISVmeB666YrUOypjFKsa0SFBxyQGfzgZt3RCRExiHSl</pair>
+                    <pair name="width" type="number">130</pair>
+                    <pair name="height" type="number">130</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+</json>

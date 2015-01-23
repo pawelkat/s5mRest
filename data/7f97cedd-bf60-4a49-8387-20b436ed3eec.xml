@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Hackfresse</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">Runtergezogene Mundwinkel, Augenlider auf Halbmast, sobald man diese Person sieht, verdirbt er einem die Laune. </pair>
+            <pair name="id" type="number">2</pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">Ein von Missmut und Unwillen und Misanthropie gezeichnetes Gesicht</pair>
+            <pair name="id" type="number">3</pair>
+        </pair>
+    </pair>
+</json>

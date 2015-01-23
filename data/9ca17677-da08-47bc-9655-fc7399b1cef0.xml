@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">mit etwas gegen die Wand fahren</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">mit etwas scheitern</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">ponieść klęskę z czymś</pair>
+                    <pair name="id" type="number">5</pair>
+                </pair>
+            </pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcR4gjXKKqbRXu6e7PMZYYjuwgKXp9VSQaoB-Ht6dGUcX1WOKnTewgHong</pair>
+                    <pair name="width" type="number">124</pair>
+                    <pair name="height" type="number">93</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">total erfolglos sein</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcQ7n5CZb6lE7FMBY5v-m5B9QjMbx3TI7VPL7cgHqI-fi8398wm4XsKQIA</pair>
+                    <pair name="width" type="number">123</pair>
+                    <pair name="height" type="number">123</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="3" type="object">
+            <pair name="title" type="string">Man kann eine Prüfung, einen Abschluss (Schulabschluss, Examen, Diplom) oder einen Betrieb gegen die Wand fahren. </pair>
+            <pair name="id" type="number">4</pair>
+        </pair>
+    </pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcSuLjHXrmq9uTGz13n4l3Cr5866CXmKWCSB8wvxqSrBFmkvzHVP1GahDyk</pair>
+            <pair name="width" type="number">143</pair>
+            <pair name="height" type="number">87</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+</json>

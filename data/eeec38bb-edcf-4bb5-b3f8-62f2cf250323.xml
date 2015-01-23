@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Pflichtenheft</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">functional specification</pair>
+            <pair name="id" type="number">2</pair>
+        </pair>
+    </pair>
+</json>

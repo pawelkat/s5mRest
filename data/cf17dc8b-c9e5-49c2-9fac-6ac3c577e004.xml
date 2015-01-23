@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">sticheln</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcQmOvRfFxJAzDJcnEcn3SglCvoZWBW_LYAZzUu4aAINUXIQnYv2lxYT</pair>
+            <pair name="width" type="number">94</pair>
+            <pair name="height" type="number">123</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">to needle</pair>
+            <pair name="id" type="number">2</pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">Entwicklern sticheln</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcS_a4njP8kbYK1tUjd8zp9urqoRYvgbWYK4rimekTxnV9ZyY0Z9C_wKPo0</pair>
+                    <pair name="width" type="number">137</pair>
+                    <pair name="height" type="number">68</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+</json>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Scheich</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcTVx7WIoWbmAUz3qXajmB3_LblgjL8ukLEmlkqoor1aLZyHB6vmbtvlo59U</pair>
+            <pair name="width" type="number">86</pair>
+            <pair name="height" type="number">137</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+</json>

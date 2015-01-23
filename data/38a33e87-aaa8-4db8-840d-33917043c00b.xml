@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">dumm wie Brot</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="10" type="object">
+            <pair name="title" type="string">Steigerung:</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcTJZGMjZwmZg2VdVDrfnMViJ9xJf_rkHwND5IHkTyDY3Bc3ZoKbjlF8tg</pair>
+                    <pair name="width" type="number">127</pair>
+                    <pair name="height" type="number">92</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">IQ von einem Knäckebrot</pair>
+                    <pair name="id" type="number">3</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcQH9SFjh9zLSLehdLZ3n4F1QMMs8Z-tvq-R_8RrMj0uWNYRvg2lqB-5fA</pair>
+                            <pair name="width" type="number">124</pair>
+                            <pair name="height" type="number">91</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="-10" type="object">
+            <pair name="title" type="string">dumm</pair>
+            <pair name="id" type="number">4</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcQ7G4lHfVFcOvVHNofTBdfN40ON1AqVd34WgA7V6PXgPCKgLrqVCZ0XHfA</pair>
+                    <pair name="width" type="number">103</pair>
+                    <pair name="height" type="number">118</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+                <pair name="position" type="array">
+                    <item type="number">174</item>
+                    <item type="number">-206</item>
+                    <item type="number">1</item>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcSEDVoaI0Q1qugcx8OmXtHv10y5WDvj-xAUTMAflF9Z2wBP3IZnVMkXn3o</pair>
+            <pair name="width" type="number">124</pair>
+            <pair name="height" type="number">82</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+</json>

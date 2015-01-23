@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Aussetzer</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">Mini-Blackout</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcTD1bobZCtN35Wy9HFPp18QxmkUjguijmNlih6GwoJuF2nZHGIcX_HE7w</pair>
+                    <pair name="width" type="number">127</pair>
+                    <pair name="height" type="number">85</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">brain failure</pair>
+            <pair name="id" type="number">3</pair>
+        </pair>
+        <pair name="3" type="object">
+            <pair name="title" type="string">mental blackout</pair>
+            <pair name="id" type="number">4</pair>
+        </pair>
+        <pair name="-10" type="object">
+            <pair name="title" type="string">general: break</pair>
+            <pair name="id" type="number">5</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcSKnlQIwODeAQDbb90ddohYSlTb5zYqXJ2QFk84KDNGtdO-s2iQXR4Edg</pair>
+                    <pair name="width" type="number">124</pair>
+                    <pair name="height" type="number">95</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+</json>

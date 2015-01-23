@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">erledigen</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">Kill someone</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcSxO1T9Gy_Db9ULGLfubo6B9qWXgdUteh9ofuUs4AyPSKvRDFsv7bAWmA</pair>
+                    <pair name="width" type="number">113</pair>
+                    <pair name="height" type="number">113</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+            <pair name="ideas" type="string"/>
+        </pair>
+        <pair name="-10" type="object">
+            <pair name="title" type="string">Achtung! False friend</pair>
+            <pair name="id" type="number">6</pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">besorgen</pair>
+                    <pair name="id" type="number">4</pair>
+                    <pair name="ideas" type="object">
+                        <pair name="2" type="object">
+                            <pair name="title" type="string">es jemandem besorgen</pair>
+                            <pair name="id" type="number">7</pair>
+                            <pair name="ideas" type="object">
+                                <pair name="1" type="object">
+                                    <pair name="title" type="string">intercourse</pair>
+                                    <pair name="id" type="number">5</pair>
+                                    <pair name="attr" type="object">
+                                        <pair name="style" type="object">
+                                            <pair name="background" type="string">#E0E0E0</pair>
+                                        </pair>
+                                        <pair name="icon" type="object">
+                                            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcT9MY7GiQs1mol-LkLgA1GGwNtmMWQXfyrKcuM2YEHCFGlVDW1KRKrLJfg</pair>
+                                            <pair name="width" type="number">77</pair>
+                                            <pair name="height" type="number">116</pair>
+                                            <pair name="position" type="string">left</pair>
+                                        </pair>
+                                    </pair>
+                                </pair>
+                            </pair>
+                        </pair>
+                    </pair>
+                    <pair name="attr" type="object">
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                        <pair name="position" type="array">
+                            <item type="number">17</item>
+                            <item type="number">292.5</item>
+                            <item type="number">1</item>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcR-tCkvXfCsPiCs3cgM_70acb4GlvZ5kEo6Pe0wcpIJu20tj3WBQX2SAr73</pair>
+                    <pair name="width" type="number">136</pair>
+                    <pair name="height" type="number">91</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+    <pair name="links" type="string"/>
+</json>

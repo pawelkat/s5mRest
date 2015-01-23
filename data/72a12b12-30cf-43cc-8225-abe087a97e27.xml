@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">sich ekeln</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcRVQX2pKII1G8LEnTmcgHEmhFhCb9IEZF6z619Mil3JZne92BlHWAocegw</pair>
+            <pair name="width" type="number">135</pair>
+            <pair name="height" type="number">89</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">fühlen</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">igitt</pair>
+                    <pair name="id" type="number">3</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcSE5eho02gYeipKiwdXt017wE0BIgvuB5NlBbF0aUVzLaDlB8o1hCM8brY</pair>
+                            <pair name="width" type="number">138</pair>
+                            <pair name="height" type="number">102</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                </pair>
+                <pair name="2" type="object">
+                    <pair name="title" type="string">bäh</pair>
+                    <pair name="id" type="number">4</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcT1G1_UPLfJT_1xYGRCz0oG9BdL_Ki_xI-RHGnyYrGf84nUgBXhSx9A6Us</pair>
+                            <pair name="width" type="number">137</pair>
+                            <pair name="height" type="number">77</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                </pair>
+                <pair name="3" type="object">
+                    <pair name="title" type="string">pfui</pair>
+                    <pair name="id" type="number">5</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcRNOLYslNfD8N96p3wQbFGN24HRhFA4T9uEspxAHJcWjFpuyeIHCHDt</pair>
+                            <pair name="width" type="number">111</pair>
+                            <pair name="height" type="number">111</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+</json>

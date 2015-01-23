@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Rotz und Wasser heulen</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcRkScE5WByDBm8qNW4IhsusBukEErw0iDX1MphfiXXvpMJ6O_auW2Ji3pE</pair>
+            <pair name="width" type="number">108</pair>
+            <pair name="height" type="number">129</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">sehr stark weinen, sehr traurig sein</pair>
+            <pair name="id" type="number">2</pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">Rotz</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcTX9FHdFjjeNOTQRx6XWjGv_eu03CeJ5BBpLJ5IfwdbFF_LYGdouovXhzaI</pair>
+                    <pair name="width" type="number">124</pair>
+                    <pair name="height" type="number">142</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="3" type="object">
+            <pair name="title" type="string">Wasser</pair>
+            <pair name="id" type="number">4</pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">hier: Tränen</pair>
+                    <pair name="id" type="number">5</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcTfuLxB9lvFnq7lXzmDTlUkoa6rCtZ8tdfN-WBYv-iIs6rsvjEFByT8vsU</pair>
+                            <pair name="width" type="number">114</pair>
+                            <pair name="height" type="number">124</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+    <pair name="links" type="string"/>
+</json>

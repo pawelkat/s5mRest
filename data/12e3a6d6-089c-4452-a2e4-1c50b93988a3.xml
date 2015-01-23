@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Aufstand</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcRHSQF4jWxE3aO7_d1YvOswg_MZm10IpVDH8pDp1IKqjVAMijiFtoMYOO1C</pair>
+            <pair name="width" type="number">137</pair>
+            <pair name="height" type="number">100</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">Beispiel: </pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">Zwergenaufstand </pair>
+                    <pair name="id" type="number">3</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcQWoQjUDuJGp4T27rX4GBnQqZ_4lirwArt_bL-GVns3931NUZ12sf0k8KA3</pair>
+                            <pair name="width" type="number">143</pair>
+                            <pair name="height" type="number">95</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                        <pair name="collapsed" type="boolean">true</pair>
+                    </pair>
+                    <pair name="ideas" type="object">
+                        <pair name="1" type="object">
+                            <pair name="title" type="string">(rewolta krasnali, dzieci lub niewaznych osob)</pair>
+                            <pair name="id" type="number">4</pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+            <pair name="attr" type="object">
+                <pair name="position" type="array">
+                    <item type="number">21</item>
+                    <item type="number">-140</item>
+                    <item type="number">1</item>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+</json>

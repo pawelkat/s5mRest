@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">die Last</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcT0UbLBeGeO-GWHuQuywqDEvnuIUjFEHkonMZ3mm7uDWvtabi49QszlLLQ</pair>
+            <pair name="width" type="number">149</pair>
+            <pair name="height" type="number">111</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">[größeres] Gewicht, das etwas belastet</pair>
+            <pair name="id" type="number">2</pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">schwere Ladung</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcQlAoZZwVvj4Avo-fg0Y3S20nPnQstGZOtGjYy9giQY7McxS3NqiS1Ny8rh</pair>
+                    <pair name="width" type="number">137</pair>
+                    <pair name="height" type="number">115</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="3" type="object">
+            <pair name="title" type="string">Ballast</pair>
+            <pair name="id" type="number">4</pair>
+        </pair>
+        <pair name="4" type="object">
+            <pair name="title" type="string">Beispiel: Schuld / Gebühren geht zu meinen Lasten = die Gebühren /Schuld trage ich oder übernehme ich</pair>
+            <pair name="id" type="number">5</pair>
+        </pair>
+        <pair name="5" type="object">
+            <pair name="title" type="string">etwas, was [von jemandem] getragen oder transportiert wird [und durch sein Gewicht als drückend empfunden wird]</pair>
+            <pair name="id" type="number">6</pair>
+        </pair>
+    </pair>
+</json>

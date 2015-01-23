@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Streber</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">Nerd</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="ideas" type="object"/>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcSY1TLTKIpkq8YewHEv4BI40jYArEq4a3k7cV22LUs8s_VFlFxWfcXX5ZjY</pair>
+                    <pair name="width" type="number">150</pair>
+                    <pair name="height" type="number">150</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">nie daje sciagac</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcTv6KxbGc0ZXegtVD29zMSedfKGYRYeo1tA3n5p-ihLpKv3Q4PhnngkqIo</pair>
+                    <pair name="width" type="number">133</pair>
+                    <pair name="height" type="number">101</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="13" type="object">
+            <pair name="title" type="string">Steigerung:</pair>
+            <pair name="id" type="number">5</pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">Oberstreber</pair>
+                    <pair name="id" type="number">4</pair>
+                    <pair name="attr" type="object">
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcTJZGMjZwmZg2VdVDrfnMViJ9xJf_rkHwND5IHkTyDY3Bc3ZoKbjlF8tg</pair>
+                    <pair name="width" type="number">127</pair>
+                    <pair name="height" type="number">92</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcQo97YktKBCfujOBUjYhcw7HleIoxZEo-9ZEUYGm3Dwkf_sImoDkAxzZQ8</pair>
+            <pair name="width" type="number">83</pair>
+            <pair name="height" type="number">124</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+</json>

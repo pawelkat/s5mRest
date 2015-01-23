@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Stollen</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">Christstollen</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcTECp8Hfq5TBncjxG614hXXRtAV3Gt4LQ2vjcpgGYqn9QUwne_o9EdTVRA</pair>
+                    <pair name="width" type="number">126</pair>
+                    <pair name="height" type="number">84</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">Bergstollen</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcQg3OleTC5EMJYOKdxfyZn3v_kUnBC2XafLqFzdEo_b2lUMAlZ4KfTExA</pair>
+                    <pair name="width" type="number">116</pair>
+                    <pair name="height" type="number">87</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="3" type="object">
+            <pair name="title" type="string">Fußballstollen</pair>
+            <pair name="id" type="number">4</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcT5sPPvasHv3K6uZNHeCB6H25RJ4qSX3KzyTpxhkBO4YlcfeITOGHLJ8WU</pair>
+                    <pair name="width" type="number">130</pair>
+                    <pair name="height" type="number">97</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+</json>

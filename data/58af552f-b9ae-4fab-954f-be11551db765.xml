@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">Plansprache</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcSn8qq-iAyriU3KT3IFwIkFefHohEYl75zx5-wfpN2qVjw8BA1lvQnUUg</pair>
+            <pair name="width" type="number">119</pair>
+            <pair name="height" type="number">87</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+    <pair name="ideas" type="object">
+        <pair name="1" type="object">
+            <pair name="title" type="string">Esperanto</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t1.gstatic.com/images?q=tbn:ANd9GcSaG_mRT1pZzZ1b9AvR3wXtLTCnInOn2_PfROIahIZ7zg_I8X3PSzODC6U</pair>
+                    <pair name="width" type="number">150</pair>
+                    <pair name="height" type="number">107</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+                <pair name="collapsed" type="boolean">true</pair>
+            </pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">Wortklassen</pair>
+                    <pair name="id" type="number">6</pair>
+                    <pair name="ideas" type="object">
+                        <pair name="1" type="object">
+                            <pair name="title" type="string">Substantiv</pair>
+                            <pair name="id" type="number">7</pair>
+                            <pair name="ideas" type="object">
+                                <pair name="1" type="object">
+                                    <pair name="title" type="string">-o</pair>
+                                    <pair name="id" type="number">8</pair>
+                                </pair>
+                            </pair>
+                        </pair>
+                        <pair name="2" type="object">
+                            <pair name="title" type="string">Verb</pair>
+                            <pair name="id" type="number">9</pair>
+                            <pair name="ideas" type="object">
+                                <pair name="1" type="object">
+                                    <pair name="title" type="string">Infinitiv</pair>
+                                    <pair name="id" type="number">10</pair>
+                                    <pair name="ideas" type="object">
+                                        <pair name="1" type="object">
+                                            <pair name="title" type="string">-i</pair>
+                                            <pair name="id" type="number">11</pair>
+                                            <pair name="ideas" type="object">
+                                                <pair name="1" type="object">
+                                                    <pair name="title" type="string">zeiten</pair>
+                                                    <pair name="id" type="number">12</pair>
+                                                    <pair name="ideas" type="object">
+                                                        <pair name="1" type="object">
+                                                            <pair name="title" type="string">präsens</pair>
+                                                            <pair name="id" type="number">13</pair>
+                                                            <pair name="ideas" type="object">
+                                                                <pair name="1" type="object">
+                                                                    <pair name="title" type="string">-as</pair>
+                                                                    <pair name="id" type="number">14</pair>
+                                                                </pair>
+                                                            </pair>
+                                                        </pair>
+                                                        <pair name="2" type="object">
+                                                            <pair name="title" type="string">perfect</pair>
+                                                            <pair name="id" type="number">15</pair>
+                                                            <pair name="ideas" type="object">
+                                                                <pair name="1" type="object">
+                                                                    <pair name="title" type="string">-is</pair>
+                                                                    <pair name="id" type="number">16</pair>
+                                                                </pair>
+                                                            </pair>
+                                                        </pair>
+                                                        <pair name="3" type="object">
+                                                            <pair name="title" type="string">futur</pair>
+                                                            <pair name="id" type="number">17</pair>
+                                                            <pair name="ideas" type="object">
+                                                                <pair name="1" type="object">
+                                                                    <pair name="title" type="string">-os</pair>
+                                                                    <pair name="id" type="number">18</pair>
+                                                                </pair>
+                                                            </pair>
+                                                        </pair>
+                                                        <pair name="4" type="object">
+                                                            <pair name="title" type="string">konditional</pair>
+                                                            <pair name="id" type="number">20</pair>
+                                                            <pair name="ideas" type="object">
+                                                                <pair name="1" type="object">
+                                                                    <pair name="title" type="string">-us</pair>
+                                                                    <pair name="id" type="number">21</pair>
+                                                                </pair>
+                                                            </pair>
+                                                        </pair>
+                                                    </pair>
+                                                </pair>
+                                            </pair>
+                                        </pair>
+                                    </pair>
+                                </pair>
+                            </pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="2" type="object">
+            <pair name="title" type="string">Volapük</pair>
+            <pair name="id" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcSGFucWYzuHJAwiFT2odWwTXloxx8fHnNISZ9r-QiU-qBoqd-WE2Zs5QdM</pair>
+                    <pair name="width" type="number">125</pair>
+                    <pair name="height" type="number">114</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string">Gaststätte in Winterbach :-)</pair>
+                    <pair name="id" type="number">22</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcSaX2UIIvjPJeCdMQ3EaAWIrDbKDjs9mYOvoKDIzrpE0VhrMGTRdwLA4A</pair>
+                            <pair name="width" type="number">101</pair>
+                            <pair name="height" type="number">75</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="-10" type="object">
+            <pair name="title" type="string">Lojban</pair>
+            <pair name="id" type="number">5</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcT8sCy_03yYsN6d6DAc9G-HIBdVJr5R1Xl7-8TLdFuQ0pwqj-T3lFhWwg</pair>
+                    <pair name="width" type="number">116</pair>
+                    <pair name="height" type="number">77</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+        <pair name="-20" type="object">
+            <pair name="title" type="string">Interlingua</pair>
+            <pair name="id" type="number">4</pair>
+            <pair name="attr" type="object">
+                <pair name="icon" type="object">
+                    <pair name="url" type="string">http://t3.gstatic.com/images?q=tbn:ANd9GcThLmyPhoKls93QzbuTkbxBFASdZ4fxJiZcmz8IlipeMLUkVh0BQwaI3Q</pair>
+                    <pair name="width" type="number">96</pair>
+                    <pair name="height" type="number">96</pair>
+                    <pair name="position" type="string">left</pair>
+                </pair>
+                <pair name="style" type="object">
+                    <pair name="background" type="string">#E0E0E0</pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+</json>

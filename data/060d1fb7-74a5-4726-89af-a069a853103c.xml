@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<json type="object">
+    <pair name="title" type="string">beschissen</pair>
+    <pair name="id" type="number">1</pair>
+    <pair name="formatVersion" type="number">2</pair>
+    <pair name="attr" type="object">
+        <pair name="icon" type="object">
+            <pair name="url" type="string">http://t0.gstatic.com/images?q=tbn:ANd9GcQRthdvX75IMBt7RRfXEpFzScsjvGAmjWjIvFWBQFOmoeE757JesGzr_A</pair>
+            <pair name="width" type="number">124</pair>
+            <pair name="height" type="number">86</pair>
+            <pair name="position" type="string">left</pair>
+        </pair>
+        <pair name="style" type="object">
+            <pair name="background" type="string">#22AAE0</pair>
+        </pair>
+    </pair>
+    <pair name="ideas" type="object">
+        <pair name="-10" type="object">
+            <pair name="title" type="string">Beispiel:</pair>
+            <pair name="id" type="number">2</pair>
+            <pair name="ideas" type="object">
+                <pair name="1" type="object">
+                    <pair name="title" type="string"> Access ist ein beschissenes Programm</pair>
+                    <pair name="id" type="number">3</pair>
+                    <pair name="attr" type="object">
+                        <pair name="icon" type="object">
+                            <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcT16vo7WeuQ4RxeOZI0QcjaHNH5ucGlCbnOIzbRR1EtIyNfNxiMb2dZ4Rjz</pair>
+                            <pair name="width" type="number">150</pair>
+                            <pair name="height" type="number">84</pair>
+                            <pair name="position" type="string">left</pair>
+                        </pair>
+                        <pair name="style" type="object">
+                            <pair name="background" type="string">#E0E0E0</pair>
+                        </pair>
+                    </pair>
+                    <pair name="ideas" type="object">
+                        <pair name="1" type="object">
+                            <pair name="title" type="string">do dupy</pair>
+                            <pair name="id" type="number">4</pair>
+                            <pair name="attr" type="object">
+                                <pair name="icon" type="object">
+                                    <pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcRyYdDLQkqX0NdD_rD4K8pAT8xL1P8CC2jcrXEknLU2Y8_7H3c8UBZqEP0</pair>
+                                    <pair name="width" type="number">136</pair>
+                                    <pair name="height" type="number">85</pair>
+                                    <pair name="position" type="string">left</pair>
+                                </pair>
+                                <pair name="style" type="object">
+                                    <pair name="background" type="string">#E0E0E0</pair>
+                                </pair>
+                                <pair name="position" type="array">
+                                    <item type="number">94</item>
+                                    <item type="number">155.5</item>
+                                    <item type="number">1</item>
+                                </pair>
+                            </pair>
+                        </pair>
+                    </pair>
+                </pair>
+            </pair>
+        </pair>
+    </pair>
+    <pair name="links" type="array">
+        <item type="object">
+            <pair name="ideaIdFrom" type="number">1</pair>
+            <pair name="ideaIdTo" type="number">3</pair>
+            <pair name="attr" type="object">
+                <pair name="style" type="object">
+                    <pair name="color" type="string">#FF0000</pair>
+                    <pair name="lineStyle" type="string">dashed</pair>
+                </pair>
+            </pair>
+        </item>
+    </pair>
+</json>
