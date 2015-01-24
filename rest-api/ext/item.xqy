@@ -81,5 +81,15 @@ function ext:delete(
 {
   map:put($context, "output-types", "application/xml"),
   xdmp:set-response-code(200, "OK"),
-  document { "DELETE called on the ext service extension" }
+  try{
+    let $uri := map:get($params, "uri")
+    let $doc := document($uri)
+    let $item-title := $doc/json/pair[@name="title"]/text()
+    (:TODO: here we delete:)
+    return
+      document { "item '"||$uri||"' deleted" }
+  }
+  catch ($exception) {
+      document {"Problem deleting the item "|| $exception }
+  }
 };
