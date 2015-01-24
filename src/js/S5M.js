@@ -70,8 +70,9 @@ app={
 		var json;
 		$.ajax(
 			{
-				url: "rest/new",
+				url: "v1/resources/item",
 				dataType: 'json',
+				type: 'POST',
 				accepts: {
 					text: "application/json"
 				},
@@ -181,39 +182,35 @@ app={
 	},
 			
 	deleteMapItem: function() {
-		app.requireLogin(function () {
-			if (currentUUID!=null) {
-				//trying to find next item if not found select the first one
-				var nextItemId=$('#selectable .ui-selected').next().attr('id');
-				if(nextItemId==null){
-					nextItemId=$('#selectable li').first().attr('id');
-				}
-				
-				$.ajax(
-				{
-					url: "rest/delete",
-					contentType:'application/json',
-					data: {
-						id: currentUUID
-					},
-					dataType:'json',
-					success: function (data) {
-						app.message(data.response + " deleted.");
-						app.getMapItems();
-						//opening next available mapItem or the first one (selected above) if available. return new item if list is empty 
-						if(nextItemId!=null){
-							app.openMapItem(nextItemId);
-							$("li[id='"+nextItemId+"']").addClass('ui-selected');
-						}else{
-							app.newMapItem;
-						}
-					},
-					error: function (data) {
-						app.message("error by deleting.");
-					}
-				});
+		if (currentUUID!=null) {
+			//trying to find next item if not found select the first one
+			var nextItemId=$('#selectable .ui-selected').next().attr('id');
+			if(nextItemId==null){
+				nextItemId=$('#selectable li').first().attr('id');
 			}
-		});
+			
+			$.ajax(
+			{
+				url: "v1/resources/item?rs:uri=" + currentUUID,
+				contentType:'application/json',
+				type: 'Delete',
+				dataType:'json',
+				success: function (data) {
+					app.message(data.response + " deleted.");
+					app.getMapItems();
+					//opening next available mapItem or the first one (selected above) if available. return new item if list is empty 
+					if(nextItemId!=null){
+						app.openMapItem(nextItemId);
+						$("li[id='"+nextItemId+"']").addClass('ui-selected');
+					}else{
+						app.newMapItem;
+					}
+				},
+				error: function (data) {
+					app.message("error by deleting.");
+				}
+			});
+		}
 	},
 	
 	onIdeaChanged: function(){
