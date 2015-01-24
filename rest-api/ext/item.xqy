@@ -31,7 +31,7 @@ function ext:get(
 (:
  :)
 declare 
-%roxy:params("")
+%roxy:params("uri=xs:string")
 function ext:put(
     $context as map:map,
     $params  as map:map,
@@ -40,7 +40,20 @@ function ext:put(
 {
   map:put($context, "output-types", "application/xml"),
   xdmp:set-response-code(200, "OK"),
-  document { "PUT called on the ext service extension" }
+
+  try{
+    let $uri := map:get($params, "uri")
+    let $doc := document($uri)
+    let $contentXml := xqjson:parse-json($input)
+    let $item-title := $contentXml/pair[@name="title"]/text()
+    let $saved := xdmp:node-replace($doc/*, $contentXml)
+    return
+      document { "item '"||$item-title||"' saved" }
+  }
+  catch ($exception) {
+      "Problem saving the item ",
+      $exception 
+  }
 };
 
 (:
