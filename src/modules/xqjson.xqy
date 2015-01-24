@@ -25,7 +25,7 @@ xquery version "1.0-ml";
     20130612 Joe Wicentowski patched tokenize to handle long string arrays
     20130613 Leif-Jöran Olsson patched decodeHexChar to correctly handle a-f chars.
     20130614 Refactoring suggestion for performance of same function by Michael Westbay.
-
+    20140507 @Albicocca helped fix bug where commas were output when serializing JSON.
 :)
 
 module namespace xqjson="http://xqilla.sourceforge.net/lib/xqjson";
@@ -184,7 +184,7 @@ declare %private function xqjson:tokenize($json as xs:string)
   as element(token)*
 {
   let $tokens := ("\{", "\}", "\[", "\]", ":", ",", "true", "false", "null", "\s+",
-    '"(?>[^"\\]|\\"|\\\\|\\/|\\b|\\f|\\n|\\r|\\t|\\u[A-Fa-f0-9][A-Fa-f0-9][A-Fa-f0-9][A-Fa-f0-9])*"',
+    '"([^"\\]|\\"|\\\\|\\/|\\b|\\f|\\n|\\r|\\t|\\u[A-Fa-f0-9][A-Fa-f0-9][A-Fa-f0-9][A-Fa-f0-9])*"',
     "-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+\-]?[0-9]+)?")
   let $regex := string-join(for $t in $tokens return concat("(",$t,")"),"|")
   for $match in analyze-string($json, $regex)/*
@@ -204,7 +204,12 @@ declare %private function xqjson:tokenize($json as xs:string)
       let $v := string($match)
       let $len := string-length($v)
       return xqjson:token("string", substring($v, 2, $len - 2))
-    else if($match/*:group/@nr = 12) then xqjson:token("number", string($match))
+    (: 
+        In the original version the string matching *inner* group was masked via '?>' as an atomic group (thus non-capturing).
+        This is not supported by Saxon so I removed it and incremented the group count by one.
+        group/@nr=12 is now the inner group of group/@nr=11 and will never appear as a direct child of <match>.
+    :)
+    else if($match/*:group/@nr = 13) then xqjson:token("number", string($match))
     else xqjson:token("error", string($match))
 };
 
@@ -229,9 +234,8 @@ declare function xqjson:serialize-json($json-xml as element()?)
 declare %private function xqjson:serializeJSONElement($e as element())
   as xs:string*
 {
-    (:  //PK:patched here!!!!!!:)
-  if($e/@type = "object" and $e/*) then xqjson:serializeJSONObject($e)
-  else if($e/@type = "array" and $e/*) then xqjson:serializeJSONArray($e)
+  if($e/@type = "object") then xqjson:serializeJSONObject($e)
+  else if($e/@type = "array") then xqjson:serializeJSONArray($e)
   else if($e/@type = "null") then "null"
   else if($e/@type = "boolean") then string($e)
   else if($e/@type = "number") then string($e)
@@ -242,21 +246,23 @@ declare %private function xqjson:serializeJSONObject($e as element())
   as xs:string*
 {
   "{",
-  $e/*/(
-    if(position() = 1) then () else ",",
-    '"', xqjson:escape-json-string(@name), '":',
-    xqjson:serializeJSONElement(.)
+  for $el at $pos in $e/* return
+ (
+    if($pos = 1) then () else ",",
+    '"', xqjson:escape-json-string($el/@name), '":',
+    xqjson:serializeJSONElement($el)
   ),
   "}"
-};
+}; 
 
 declare %private function xqjson:serializeJSONArray($e as element())
   as xs:string*
 {
   "[",
-  $e/*/(
-    if(position() = 1) then () else ",",
-    xqjson:serializeJSONElement(.)
+  for $el at $pos in $e/* return
+  (
+    if($pos = 1) then () else ",",
+    xqjson:serializeJSONElement($el)
   ),
   "]"
 };
