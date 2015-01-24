@@ -51,8 +51,7 @@ function ext:put(
       document { "item '"||$item-title||"' saved" }
   }
   catch ($exception) {
-      "Problem saving the item ",
-      $exception 
+      document {"Problem saving the item "|| $exception }
   }
 };
 
