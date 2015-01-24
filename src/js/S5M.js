@@ -5,8 +5,12 @@ google.setOnLoadCallback(function(){
     imageSearch = new google.search.ImageSearch();
     }
 ); */
+var currentIdeaChanged = false;
+var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 15, "firstpos2": 15};
 
 $(document).ready(function() {
+	//$.pnotify.defaults.history = false;
+	//$.pnotify.defaults.styling = "jqueryui";
 	jQuery.fn.attachmentEditorWidget = function (mapModel) {
 		'use strict';
 		return this.each(function () {
@@ -26,7 +30,6 @@ $(document).ready(function() {
 		window.onerror = alert;
 		
 		var container = jQuery('#container'),
-		//idea = MAPJS.content(test_tree),
 		isTouch = false,
 		renderImages = false,
 		mapModel = new MAPJS.MapModel(MAPJS.KineticMediator.layoutCalculator, ['A brilliant idea...', 'A cunning plan...', 'We\'ll be famous...'], ['hoo har']);
@@ -39,7 +42,16 @@ $(document).ready(function() {
 			});
 		});
 		
-		//mapModel.setIdea(idea);
+		//initialize buttons
+		var button = $("#new").button();
+		button.click(app.newMapItem);
+		
+		button = $("#save").button();
+		button.click(app.saveMapItem);
+		
+		button = $("#deleteItem").button();
+		button.click(app.deleteMapItem); 
+		//
 		jQuery('#linkEditWidget').linkEditWidget(mapModel);
 		window.mapModel = mapModel;
 		jQuery('.arrow').click(function () {
@@ -69,7 +81,7 @@ app={
 					idea = MAPJS.content(json);
 					mapModel.setIdea(idea);
 					mapModel.editNode();
-					idea.addEventListener('changed', eXide.app.onIdeaChanged);
+					idea.addEventListener('changed', app.onIdeaChanged);
 				}
 			} 
 		);
@@ -95,7 +107,7 @@ app={
 		);
 		idea = MAPJS.content(json);
 		mapModel.setIdea(idea);
-		//idea.addEventListener('changed', eXide.app.onIdeaChanged);
+		//idea.addEventListener('changed', app.onIdeaChanged);
 	},
 	getMapItems: function() {
 		var htm;
@@ -128,7 +140,7 @@ app={
 							"Close": function() {
 								$( this ).dialog( "close" );
 								currentIdeaChanged = false;
-								eXide.app.openMapItem(selId);
+								app.openMapItem(selId);
 							},
 							Cancel: function() {
 								$( this ).dialog( "close" );
@@ -140,39 +152,36 @@ app={
 						}
 					});
 				}else{
-					eXide.app.openMapItem(selId);
+					app.openMapItem(selId);
 				}
 			}
 		});
 	},
 	
-	saveMapItem: function() {
-		eXide.app.requireLogin(function () {
-			var saveIdea = mapModel.getIdea()
-			$.ajax(
-			{
-				url: "rest/save?id=" + currentUUID,
-				type: 'POST',
-				contentType:'application/json',
-				data: JSON.stringify(saveIdea), 
-				dataType:'json',
-				success: function (data) {
-					eXide.util.message(data.response + " stored.");
-					if(currentUUID==null){
-						eXide.app.getMapItems();
-					}
-					currentIdeaChanged = false;
-				},
-				error: function (data) {
-					eXide.util.message("error by storing.");
+	saveMapItem: function() {		
+		var saveIdea = mapModel.getIdea()
+		$.ajax(
+		{
+			url: "v1/resources/item?rs:uri=" + currentUUID,
+			type: 'Put',
+			contentType:'application/json',
+			data: JSON.stringify(saveIdea), 
+			dataType:'json',
+			success: function (data) {
+				app.message(data.responseText);
+				if(currentUUID==null){
+					app.getMapItems();
 				}
-			});
-			
-		});
+				currentIdeaChanged = false;
+			},
+			error: function (data) {
+				app.message(data.responseText);
+			}
+		});			
 	},
 			
 	deleteMapItem: function() {
-		eXide.app.requireLogin(function () {
+		app.requireLogin(function () {
 			if (currentUUID!=null) {
 				//trying to find next item if not found select the first one
 				var nextItemId=$('#selectable .ui-selected').next().attr('id');
@@ -189,18 +198,18 @@ app={
 					},
 					dataType:'json',
 					success: function (data) {
-						eXide.util.message(data.response + " deleted.");
-						eXide.app.getMapItems();
+						app.message(data.response + " deleted.");
+						app.getMapItems();
 						//opening next available mapItem or the first one (selected above) if available. return new item if list is empty 
 						if(nextItemId!=null){
-							eXide.app.openMapItem(nextItemId);
+							app.openMapItem(nextItemId);
 							$("li[id='"+nextItemId+"']").addClass('ui-selected');
 						}else{
-							eXide.app.newMapItem;
+							app.newMapItem;
 						}
 					},
 					error: function (data) {
-						eXide.util.message("error by deleting.");
+						app.message("error by deleting.");
 					}
 				});
 			}
@@ -209,5 +218,17 @@ app={
 	
 	onIdeaChanged: function(){
 		currentIdeaChanged = true;
+	},
+	
+	message: function(message) {
+		new PNotify({
+			text: message,
+			shadow: true,
+			hide: true,
+			closer: true,
+			opacity: .65,
+			addclass: "stack-bottomright custom",
+			stack: stack_bottomright
+		});
 	}
 }		
