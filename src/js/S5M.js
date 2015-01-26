@@ -57,8 +57,10 @@ $(document).ready(function() {
 		jQuery('.arrow').click(function () {
 			jQuery(this).toggleClass('active');
 		});
-		app.openMapItem("/74807516-272b-4b73-af30-6e2a551f0f55.xml");
+
 		app.getMapItems();
+		var firstItemId=$('#selectable li').first().attr('id');
+		app.openMapItem(firstItemId);
 	}());
 
 });
@@ -67,25 +69,11 @@ app={
    newMapItem: function(){
 		//setting the uuid flag to null
 		currentUUID=null;
-		var json;
-		$.ajax(
-			{
-				url: "v1/resources/item",
-				dataType: 'json',
-				type: 'POST',
-				accepts: {
-					text: "application/json"
-				},
-				async: false,
-				success: function(bindings) {
-					json = bindings;
-					idea = MAPJS.content(json);
-					mapModel.setIdea(idea);
-					mapModel.editNode();
-					idea.addEventListener('changed', app.onIdeaChanged);
-				}
-			} 
-		);
+		var jsonPrototype={"title":"New Item","id":1,"formatVersion":2,"ideas":{"1":{"title":"New Item Explanation","id":2}}}
+		idea = MAPJS.content(jsonPrototype);
+		mapModel.setIdea(idea);
+		mapModel.editNode();
+		idea.addEventListener('changed', app.onIdeaChanged);
 	},
 	openMapItem: function(uuid){
 		currentUUID=uuid;
@@ -161,24 +149,48 @@ app={
 	
 	saveMapItem: function() {		
 		var saveIdea = mapModel.getIdea()
-		$.ajax(
-		{
-			url: "v1/resources/item?rs:uri=" + currentUUID,
-			type: 'Put',
-			contentType:'application/json',
-			data: JSON.stringify(saveIdea), 
-			dataType:'json',
-			success: function (data) {
-				app.message(data.responseText);
-				if(currentUUID==null){
-					app.getMapItems();
+		if (currentUUID==null){
+			$.ajax(
+				{
+					url: "v1/resources/item",
+					dataType: 'json',
+					type: 'POST',
+					contentType:'application/json',
+					data: JSON.stringify(saveIdea), 
+					dataType:'json',
+					success: function (data) {
+						app.message(data.responseText + " created");
+						app.getMapItems();
+						currentUUID = data.responseText;
+						currentIdeaChanged = false;
+					},
+					error: function (data) {
+						//change when correct json returned!!
+						app.message(data.responseText + " created");
+						app.getMapItems();
+						currentUUID = data.responseText;
+						currentIdeaChanged = false;
+					}
+				} 
+			);
+		}
+		else{
+			$.ajax(
+			{
+				url: "v1/resources/item?rs:uri=" + currentUUID,
+				type: 'Put',
+				contentType:'application/json',
+				data: JSON.stringify(saveIdea), 
+				dataType:'json',
+				success: function (data) {
+					app.message(data.responseText);
+					currentIdeaChanged = false;
+				},
+				error: function (data) {
+					app.message(data.responseText);
 				}
-				currentIdeaChanged = false;
-			},
-			error: function (data) {
-				app.message(data.responseText);
-			}
-		});			
+			});
+		}
 	},
 			
 	deleteMapItem: function() {
@@ -208,6 +220,16 @@ app={
 				},
 				error: function (data) {
 					app.message("error by deleting.");
+					//delete it when problem with json resolved
+					app.message(data.response + " deleted.");
+					app.getMapItems();
+					//opening next available mapItem or the first one (selected above) if available. return new item if list is empty 
+					if(nextItemId!=null){
+						app.openMapItem(nextItemId);
+						$("li[id='"+nextItemId+"']").addClass('ui-selected');
+					}else{
+						app.newMapItem;
+					}
 				}
 			});
 		}
