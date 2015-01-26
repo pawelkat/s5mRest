@@ -1,7 +1,6 @@
 xquery version "1.0-ml";
 
 module namespace ext = "http://marklogic.com/rest-api/resource/item";
-
 declare namespace roxy = "http://marklogic.com/roxy";
 import module namespace xqjson = "http://xqilla.sourceforge.net/lib/xqjson" at "/MarkLogic/xqjson.xqy";
 (: 
@@ -46,9 +45,21 @@ function ext:put(
     let $doc := document($uri)
     let $contentXml := xqjson:parse-json($input)
     let $item-title := $contentXml/pair[@name="title"]/text()
-    let $saved := xdmp:node-replace($doc/*, $contentXml)
+    
     return
-      document { "item '"||$item-title||"' saved" }
+      if ($doc) then
+      (
+        let $saved := xdmp:node-replace($doc/*, $contentXml)
+        return
+          (
+          xdmp:set-response-code(404, "Not found"),
+          document { "item '"||$item-title||"' saved" }
+          )
+      )
+      else
+      (
+        document {"Document not found!"}
+      )
   }
   catch ($exception) {
       document {"Problem saving the item "|| $exception }
@@ -67,7 +78,26 @@ function ext:post(
 {
   map:put($context, "output-types", "application/xml"),
   xdmp:set-response-code(200, "OK"),
-  document { "POST called on the ext service extension" }
+
+  try{
+    let $contentXml := xqjson:parse-json($input)
+    let $item-title := $contentXml/pair[@name="title"]/text()
+    let $doc-name := ext:generate-uuid-v4()
+    return
+        if ($item-title!="") then
+          (
+            let $saved:= xdmp:document-insert("/"||$doc-name||".xml",$contentXml)
+            return          
+              document { $doc-name }
+          )
+        else
+          (
+            document { "item has not any title" }
+          )
+  }
+  catch ($exception) {
+      document {"Problem creating the item "|| $exception }
+  }
 };
 
 (:
@@ -85,11 +115,32 @@ function ext:delete(
     let $uri := map:get($params, "uri")
     let $doc := document($uri)
     let $item-title := $doc/json/pair[@name="title"]/text()
-    (:TODO: here we delete:)
+    let $deleted := xdmp:document-delete($uri)
     return
       document { "item '"||$uri||"' deleted" }
   }
   catch ($exception) {
       document {"Problem deleting the item "|| $exception }
   }
+};
+
+(: HELPER FUNCTIONS :)
+declare function ext:random-hex($length as xs:integer) as xs:string {
+  string-join(
+    for $n in 1 to $length
+      return xdmp:integer-to-hex(xdmp:random(15)), ""
+  )
+};
+
+declare function ext:generate-uuid-v4() as xs:string {
+  string-join(
+    (
+        ext:random-hex(8),
+        ext:random-hex(4),
+        ext:random-hex(4),
+        ext:random-hex(4),
+        ext:random-hex(12)
+    ),
+    "-"
+  )
 };
