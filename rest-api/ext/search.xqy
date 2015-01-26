@@ -14,7 +14,7 @@ declare namespace roxy = "http://marklogic.com/roxy";
 (:
  :)
 declare 
-%roxy:params("")
+%roxy:params("q=xs:string")
 function ext:get(
   $context as map:map,
   $params  as map:map
@@ -22,17 +22,40 @@ function ext:get(
 {
   map:put($context, "output-types", "application/xml"),
   xdmp:set-response-code(200, "OK"),
-  document {  
-    <ol id="selectable">
-      {
-      for $doc in fn:doc()
-        let $title:=$doc/json/pair[@name="title"]/text()
-        order by $title
-        return
-          <li title="{$title}" id="{xdmp:node-uri($doc)}">{$title}</li>    
-      }
-    </ol>
-    }
+  let $query:= map:get($params, "q")
+  return
+    if ($query!="") then
+      (
+          let $matched-json:=/json[//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", "lang=en")))]]
+          return
+           document 
+          {  
+            <ol id="selectable">
+              {
+              for $matchj in $matched-json
+                let $title:=$matchj/pair[@name="title"]/text()
+                order by $title
+                return
+                  <li title="{$title}" id="{xdmp:node-uri($matchj)}">{$title} ...</li>    
+              }
+            </ol>
+            }
+        )
+    else(
+      (:returning all terms sorted alphabetically:)
+      document 
+      {  
+        <ol id="selectable">
+          {
+          for $doc in fn:doc()
+            let $title:=$doc/json/pair[@name="title"]/text()
+            order by $title
+            return
+              <li title="{$title}" id="{xdmp:node-uri($doc)}">{$title}</li>    
+          }
+        </ol>
+        }
+      )
 };
 
 (:

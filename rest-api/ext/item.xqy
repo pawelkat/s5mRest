@@ -10,7 +10,29 @@ import module namespace xqjson = "http://xqilla.sourceforge.net/lib/xqjson" at "
  : This means that the get function will take two parameters, a string and an int.
  :)
 
+(:import module namespace impl = "http://marklogic.com/appservices/search-impl" at "/MarkLogic/appservices/search/search-impl.xqy";
+import module namespace search="http://marklogic.com/appservices/search" at "/MarkLogic/appservices/search/search.xqy";
+declare option xdmp:mapping "false";
+declare variable $SEARCH-OPTIONS :=
+  <options xmlns="http://marklogic.com/appservices/search">
+    <search-option>unfiltered</search-option>
+    <term>
+      <term-option>case-insensitive</term-option>
+    </term>
+    <constraint name="facet1">
+      <collection>
+        <facet-option>limit=10</facet-option>
+      </collection>
+    </constraint>
+
+    <return-results>true</return-results>
+    <return-query>true</return-query>
+  </options>;
+search:search("boasting", $SEARCH-OPTIONS, 1, 10)
+?:)
 (:
+simple search query:
+/json[//pair[@name="title"][cts:contains(., cts:word-query("angeben", ("stemmed", "lang=en")))]]
  :)
 declare 
 %roxy:params("uri=xs:string")
