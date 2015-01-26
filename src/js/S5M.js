@@ -52,6 +52,12 @@ $(document).ready(function() {
 		button = $("#deleteItem").button();
 		button.click(app.deleteMapItem); 
 		//
+		$("#searchBox").keyup(function(e){
+			if(e.keyCode == 13)
+			{
+				app.search($(this).val());
+			}
+		});
 		jQuery('#linkEditWidget').linkEditWidget(mapModel);
 		window.mapModel = mapModel;
 		jQuery('.arrow').click(function () {
@@ -233,6 +239,56 @@ app={
 				}
 			});
 		}
+	},
+	
+	search: function(query){
+				var htm;
+		$.ajax(
+		{
+			url: "v1/resources/search",
+			dataType: 'html',
+			data: {
+				"rs:q" : query
+			},
+			accepts: {
+				text: "application/xml"
+			},
+			async: false,
+			success: function(bindings) {
+				 htm = bindings;    
+			}
+		});
+		//TODO:optimize
+		$("#itemList").html(htm);
+				$("#itemList ol").selectable({
+			selected:function(){
+				var selId=$('#selectable .ui-selected').attr('id');
+				if(currentIdeaChanged==true){
+					$("#dialog-confirm-close").dialog({
+						appendTo: "#layout-container",
+						resizable: false,
+						height:140,
+						modal: true,
+						buttons: {
+							"Close": function() {
+								$( this ).dialog( "close" );
+								currentIdeaChanged = false;
+								app.openMapItem(selId);
+							},
+							Cancel: function() {
+								$( this ).dialog( "close" );
+							}
+						},
+						open: function() { 
+							$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(0)').focus(); 
+							$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(1)').blur(); 
+						}
+					});
+				}else{
+					app.openMapItem(selId);
+				}
+			}
+		});
 	},
 	
 	onIdeaChanged: function(){
