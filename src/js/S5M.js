@@ -51,6 +51,13 @@ $(document).ready(function() {
 		
 		button = $("#deleteItem").button();
 		button.click(app.deleteMapItem); 
+		
+		button = $("#searchBtn").button();
+		button.click(
+			function(){
+				app.search($("#searchBox").val());
+			}
+		); 
 		//
 		$("#searchBox").keyup(function(e){
 			if(e.keyCode == 13)
