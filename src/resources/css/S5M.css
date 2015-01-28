@@ -112,3 +112,38 @@ body {
 	background-color: green;
 	color: white;
 }
+#selectable .ui-selecting {
+    background: none repeat scroll 0 0 gray;
+}
+#selectable .ui-selected {
+    background: none repeat scroll 0 0 gray;
+    color: white !important;
+}
+#selectable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#selectable li {
+    margin: 3px;
+    padding: 0.1em;
+    white-space: nowrap;
+}
+#google-panel .ui-selecting {
+    background: none repeat scroll 0 0 gray;
+}
+#google-panel .ui-selected {
+    background: none repeat scroll 0 0 gray;
+    color: white !important;
+}
+#google-panel {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#google-panel div {
+    margin: 3px;
+    padding: 0.1em;
+}

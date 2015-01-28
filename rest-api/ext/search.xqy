@@ -37,7 +37,7 @@ function ext:get(
                 let $matchingTitle:=string-join($matchj//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", "lang=en")))]/text(), "..")
                 order by $title
                 return
-                  <li title="{$title}" id="{xdmp:node-uri($matchj)}">{$title} <br/>... {$matchingTitle} ...</li>    
+                  <li title="{$title}" id="{xdmp:node-uri($matchj)}">{$title} <br/><span style="font-size: 10px">... {$matchingTitle} ...</span></li>    
               }
             </ol>
             }
