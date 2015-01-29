@@ -2,7 +2,7 @@
 New Generation Flashcards. 
 The web-app aims to combine the traditional way of learning using popular flashcards with another fast-learning method that uses associations of texts and images in form similar to mindmaps.
 Traditional flashcards uses only textual information and human reason doesn't memorize it efficiently. Using the mindmap that associates the given term with related images and other words is more natural for our brain.
-
+![screenshot](screenshot1.png)
 TODO:
 - Algorithm for calculating the card repetition date (basing on the statistics of 'grades') - how good the card was memorized.
 - Flashcard 'drill' page
