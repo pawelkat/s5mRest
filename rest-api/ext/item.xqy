@@ -2,7 +2,7 @@ xquery version "1.0-ml";
 
 module namespace ext = "http://marklogic.com/rest-api/resource/item";
 declare namespace roxy = "http://marklogic.com/roxy";
-import module namespace xqjson = "http://xqilla.sourceforge.net/lib/xqjson" at "/MarkLogic/xqjson.xqy";
+import module namespace xqjson = "http://xqilla.sourceforge.net/lib/xqjson" at "/modules/xqjson.xqy";
 (: 
  : To add parameters to the functions, specify them in the params annotations. 
  : Example
@@ -10,26 +10,6 @@ import module namespace xqjson = "http://xqilla.sourceforge.net/lib/xqjson" at "
  : This means that the get function will take two parameters, a string and an int.
  :)
 
-(:import module namespace impl = "http://marklogic.com/appservices/search-impl" at "/MarkLogic/appservices/search/search-impl.xqy";
-import module namespace search="http://marklogic.com/appservices/search" at "/MarkLogic/appservices/search/search.xqy";
-declare option xdmp:mapping "false";
-declare variable $SEARCH-OPTIONS :=
-  <options xmlns="http://marklogic.com/appservices/search">
-    <search-option>unfiltered</search-option>
-    <term>
-      <term-option>case-insensitive</term-option>
-    </term>
-    <constraint name="facet1">
-      <collection>
-        <facet-option>limit=10</facet-option>
-      </collection>
-    </constraint>
-
-    <return-results>true</return-results>
-    <return-query>true</return-query>
-  </options>;
-search:search("boasting", $SEARCH-OPTIONS, 1, 10)
-?:)
 (:
 simple search query:
 /json[//pair[@name="title"][cts:contains(., cts:word-query("angeben", ("stemmed", "lang=en")))]]
@@ -73,13 +53,13 @@ function ext:put(
       (
         let $saved := xdmp:node-replace($doc/*, $contentXml)
         return
-          (
-          xdmp:set-response-code(404, "Not found"),
+          (         
           document { "item '"||$item-title||"' saved" }
           )
       )
       else
       (
+        xdmp:set-response-code(404, "Not found"),
         document {"Document not found!"}
       )
   }
