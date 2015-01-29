@@ -26,7 +26,7 @@ function ext:get(
   return
     if ($query!="") then
       (
-          let $matched-json:=/json[//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", "lang=en")))]]
+          let $matched-json:=/json[//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", "lang=de")))]]
           return
            document 
           {  
@@ -34,7 +34,7 @@ function ext:get(
               {
               for $matchj in $matched-json
                 let $title:=$matchj/pair[@name="title"]/text()
-                let $matchingTitle:=string-join($matchj//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", "lang=en")))]/text(), "..")
+                let $matchingTitle:=string-join($matchj//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", "lang=de")))]/text(), "..")
                 order by $title
                 return
                   <li title="{$title}" id="{xdmp:node-uri($matchj)}">{$title} <br/><span style="font-size: 10px">... {$matchingTitle} ...</span></li>    
