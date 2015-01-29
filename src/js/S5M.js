@@ -72,7 +72,7 @@ $(document).ready(function() {
 		jQuery('.arrow').click(function () {
 			jQuery(this).toggleClass('active');
 		});
-
+		$(".toolbar-buttons").buttonset();
 		app.getMapItems();
 		var firstItemId=$('#selectable li').first().attr('id');
 		app.openMapItem(firstItemId);
