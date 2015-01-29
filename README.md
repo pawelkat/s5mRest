@@ -10,6 +10,10 @@ Traditional flashcards uses only textual information and human reason doesn't me
 - Flashcard editor with mindmup canvas (https://github.com/mindmup/mapjs).
 - Fulltext search within the whole database.
 - Relevant image selector with 'google image search'. Simply write your term and the relevant images will be found. Select the one that is most attracting attention (funny, unusual, ridiculous), that will help to better associate it with the given term.
+
+### Technologies:
+Marklogic 7.0 with REST API (roxy), Bootstrap, JQuery. JQueryUI, MindMup
+
 ### Installation:
 with roxy:
 - ml local bootstrap
