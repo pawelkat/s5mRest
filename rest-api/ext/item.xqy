@@ -4,16 +4,9 @@ module namespace ext = "http://marklogic.com/rest-api/resource/item";
 declare namespace roxy = "http://marklogic.com/roxy";
 import module namespace xqjson = "http://xqilla.sourceforge.net/lib/xqjson" at "/modules/xqjson.xqy";
 (: 
- : To add parameters to the functions, specify them in the params annotations. 
- : Example
- :   declare %roxy:params("uri=xs:string", "priority=xs:int") ext:get(...)
- : This means that the get function will take two parameters, a string and an int.
+ : The endpoint for CRUD of Flashcards (index.html)
  :)
 
-(:
-simple search query:
-/json[//pair[@name="title"][cts:contains(., cts:word-query("angeben", ("stemmed", "lang=en")))]]
- :)
 declare 
 %roxy:params("uri=xs:string")
 function ext:get(
@@ -39,7 +32,7 @@ function ext:put(
     $input   as document-node()*
 ) as document-node()?
 {
-  map:put($context, "output-types", "application/xml"),
+  map:put($context, "output-types", "application/json"),
   xdmp:set-response-code(200, "OK"),
 
   try{
@@ -54,17 +47,17 @@ function ext:put(
         let $saved := xdmp:node-replace($doc/*, $contentXml)
         return
           (         
-          document { "item '"||$item-title||"' saved" }
+          document { '{"response" : "item '||$item-title||' saved"}' }
           )
       )
       else
       (
         xdmp:set-response-code(404, "Not found"),
-        document {"Document not found!"}
+        document {'{"response" : "Document not found!"}'}
       )
   }
   catch ($exception) {
-      document {"Problem saving the item "|| $exception }
+      document {'{"response" : "Problem saving the item '|| $exception ||'}' }
   }
 };
 
@@ -78,7 +71,7 @@ function ext:post(
     $input   as document-node()*
 ) as document-node()*
 {
-  map:put($context, "output-types", "application/xml"),
+  map:put($context, "output-types", "application/json"),
   xdmp:set-response-code(200, "OK"),
 
   try{
@@ -90,15 +83,15 @@ function ext:post(
           (
             let $saved:= xdmp:document-insert("/"||$doc-name||".xml",$contentXml)
             return          
-              document { $doc-name }
+              document { '{"response" : "Document '||$doc-name||' created"}' }
           )
         else
           (
-            document { "item has not any title" }
+            document { '{"response" : "item has not any title"}' }
           )
   }
   catch ($exception) {
-      document {"Problem creating the item "|| $exception }
+      document {'{"response" : "Problem creating the item '|| $exception ||'}' }
   }
 };
 
@@ -111,7 +104,7 @@ function ext:delete(
     $params  as map:map
 ) as document-node()?
 {
-  map:put($context, "output-types", "application/xml"),
+  map:put($context, "output-types", "application/json"),
   xdmp:set-response-code(200, "OK"),
   try{
     let $uri := map:get($params, "uri")
@@ -119,10 +112,10 @@ function ext:delete(
     let $item-title := $doc/json/pair[@name="title"]/text()
     let $deleted := xdmp:document-delete($uri)
     return
-      document { "item '"||$uri||"' deleted" }
+      document {'{"response" : "item '||$uri||' deleted"}' }
   }
   catch ($exception) {
-      document {"Problem deleting the item "|| $exception }
+      document {'{"response" :"Problem deleting the item '||$exception||'}' }
   }
 };
 

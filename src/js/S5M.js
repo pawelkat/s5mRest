@@ -81,7 +81,8 @@ $(document).ready(function() {
 });
 
 app={
-   newMapItem: function(){
+	itemEndpoint : "v1/resources/item",
+	newMapItem: function(){
 		//setting the uuid flag to null
 		currentUUID=null;
 		var jsonPrototype={"title":"New Item","id":1,"formatVersion":2,"ideas":{"1":{"title":"New Item Explanation","id":2}}}
@@ -95,7 +96,7 @@ app={
 		var json;
 		$.ajax(
 			{
-				url: "v1/resources/item",
+				url: app.itemEndpoint,
 				dataType: 'json',
 				data: {
 					'rs:uri': uuid
@@ -127,39 +128,40 @@ app={
 			},
 			async: false,
 			success: function(bindings) {
-				 htm = bindings;    
-			}
-		});
-		$("#itemList").html(htm);
-		$("#itemList ol").selectable({
-			selected:function(){
-				var selId=$('#selectable .ui-selected').attr('id');
-				if(currentIdeaChanged==true){
-					$("#dialog-confirm-close").dialog({
-						appendTo: "#layout-container",
-						resizable: false,
-						height:140,
-						modal: true,
-						buttons: {
-							"Close": function() {
-								$( this ).dialog( "close" );
-								currentIdeaChanged = false;
-								app.openMapItem(selId);
-							},
-							Cancel: function() {
-								$( this ).dialog( "close" );
-							}
-						},
-						open: function() { 
-							$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(0)').focus(); 
-							$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(1)').blur(); 
+				htm = bindings; 
+				$("#itemList").html(htm);
+				$("#itemList ol").selectable({
+					selected:function(){
+						var selId=$('#selectable .ui-selected').attr('id');
+						if(currentIdeaChanged==true){
+							$("#dialog-confirm-close").dialog({
+								appendTo: "#layout-container",
+								resizable: false,
+								height:140,
+								modal: true,
+								buttons: {
+									"Close": function() {
+										$( this ).dialog( "close" );
+										currentIdeaChanged = false;
+										app.openMapItem(selId);
+									},
+									Cancel: function() {
+										$( this ).dialog( "close" );
+									}
+								},
+								open: function() { 
+									$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(0)').focus(); 
+									$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(1)').blur(); 
+								}
+							});
+						}else{
+							app.openMapItem(selId);
 						}
-					});
-				}else{
-					app.openMapItem(selId);
-				}
+					}
+				});				 
 			}
 		});
+		
 	},
 	
 	saveMapItem: function() {		
@@ -167,24 +169,20 @@ app={
 		if (currentUUID==null){
 			$.ajax(
 				{
-					url: "v1/resources/item",
+					url: app.itemEndpoint,
 					dataType: 'json',
 					type: 'POST',
 					contentType:'application/json',
 					data: JSON.stringify(saveIdea), 
 					dataType:'json',
 					success: function (data) {
-						app.message(data.responseText + " created");
+						app.message(data.response);
 						app.getMapItems();
-						currentUUID = data.responseText;
+						currentUUID = data.response;
 						currentIdeaChanged = false;
 					},
 					error: function (data) {
-						//change when correct json returned!!
-						app.message(data.responseText + " created");
-						app.getMapItems();
-						currentUUID = data.responseText;
-						currentIdeaChanged = false;
+						app.message(data.response);
 					}
 				} 
 			);
@@ -192,17 +190,17 @@ app={
 		else{
 			$.ajax(
 			{
-				url: "v1/resources/item?rs:uri=" + currentUUID,
+				url: itemEndpoint +"?rs:uri=" + currentUUID,
 				type: 'Put',
 				contentType:'application/json',
 				data: JSON.stringify(saveIdea), 
 				dataType:'json',
 				success: function (data) {
-					app.message(data.responseText);
+					app.message(data.response);
 					currentIdeaChanged = false;
 				},
 				error: function (data) {
-					app.message(data.responseText);
+					app.message(data.response);
 				}
 			});
 		}
@@ -218,12 +216,12 @@ app={
 			
 			$.ajax(
 			{
-				url: "v1/resources/item?rs:uri=" + currentUUID,
+				url: app.itemEndpoint + "?rs:uri=" + currentUUID,
 				contentType:'application/json',
 				type: 'Delete',
 				dataType:'json',
 				success: function (data) {
-					app.message(data.response + " deleted.");
+					app.message(data.response);
 					app.getMapItems();
 					//opening next available mapItem or the first one (selected above) if available. return new item if list is empty 
 					if(nextItemId!=null){
@@ -234,17 +232,7 @@ app={
 					}
 				},
 				error: function (data) {
-					app.message("error by deleting.");
-					//delete it when problem with json resolved
-					app.message(data.response + " deleted.");
-					app.getMapItems();
-					//opening next available mapItem or the first one (selected above) if available. return new item if list is empty 
-					if(nextItemId!=null){
-						app.openMapItem(nextItemId);
-						$("li[id='"+nextItemId+"']").addClass('ui-selected');
-					}else{
-						app.newMapItem;
-					}
+					app.message(data.response);
 				}
 			});
 		}
@@ -257,47 +245,47 @@ app={
 			url: "v1/resources/search",
 			dataType: 'html',
 			data: {
-				"rs:q" : query
+				"rs:q" : query,
+				"rs:lang" : "de"
 			},
 			accepts: {
 				text: "application/xml"
 			},
-			async: false,
 			success: function(bindings) {
-				 htm = bindings;    
-			}
-		});
-		//TODO:optimize
-		$("#itemList").html(htm);
+				 htm = bindings; 
+				$("#itemList").html(htm);
 				$("#itemList ol").selectable({
-			selected:function(){
-				var selId=$('#selectable .ui-selected').attr('id');
-				if(currentIdeaChanged==true){
-					$("#dialog-confirm-close").dialog({
-						appendTo: "#layout-container",
-						resizable: false,
-						height:140,
-						modal: true,
-						buttons: {
-							"Close": function() {
-								$( this ).dialog( "close" );
-								currentIdeaChanged = false;
-								app.openMapItem(selId);
+					selected:function(){
+					var selId=$('#selectable .ui-selected').attr('id');
+					if(currentIdeaChanged==true){
+						$("#dialog-confirm-close").dialog({
+							appendTo: "#layout-container",
+							resizable: false,
+							height:140,
+							modal: true,
+							buttons: {
+								"Close": function() {
+									$( this ).dialog( "close" );
+									currentIdeaChanged = false;
+									app.openMapItem(selId);
+								},
+								Cancel: function() {
+									$( this ).dialog( "close" );
+								}
 							},
-							Cancel: function() {
-								$( this ).dialog( "close" );
+							open: function() { 
+								$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(0)').focus(); 
+								$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(1)').blur(); 
 							}
-						},
-						open: function() { 
-							$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(0)').focus(); 
-							$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(1)').blur(); 
-						}
-					});
-				}else{
-					app.openMapItem(selId);
+						});
+					}else{
+						app.openMapItem(selId);
+					}
 				}
+			});				 
 			}
 		});
+		
 	},
 	
 	onIdeaChanged: function(){

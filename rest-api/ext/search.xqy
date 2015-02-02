@@ -5,16 +5,13 @@ module namespace ext = "http://marklogic.com/rest-api/resource/search";
 declare namespace roxy = "http://marklogic.com/roxy";
 
 (: 
- : To add parameters to the functions, specify them in the params annotations. 
- : Example
- :   declare %roxy:params("uri=xs:string", "priority=xs:int") ext:get(...)
- : This means that the get function will take two parameters, a string and an int.
+ :The endpoint for the search functionality.. (called in index.html)
  :)
 
 (:
  :)
 declare 
-%roxy:params("q=xs:string")
+%roxy:params("q=xs:string", "lang=xs:string")
 function ext:get(
   $context as map:map,
   $params  as map:map
@@ -23,10 +20,11 @@ function ext:get(
   map:put($context, "output-types", "application/xml"),
   xdmp:set-response-code(200, "OK"),
   let $query:= map:get($params, "q")
+  let $lang:= map:get($params, "lang")
   return
     if ($query!="") then
       (
-          let $matched-json:=/json[//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", "lang=de")))]]
+          let $matched-json:=/json[//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", concat("lang=",$lang))))]]
           return
            document 
           {  
@@ -34,7 +32,8 @@ function ext:get(
               {
               for $matchj in $matched-json
                 let $title:=$matchj/pair[@name="title"]/text()
-                let $matchingTitle:=string-join($matchj//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", "lang=de")))]/text(), "..")
+                (:here we need some optimization :)
+                let $matchingTitle:=string-join($matchj//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", concat("lang=",$lang))))]/text(), "..")
                 order by $title
                 return
                   <li title="{$title}" id="{xdmp:node-uri($matchj)}">{$title} <br/><span style="font-size: 10px">... {$matchingTitle} ...</span></li>    
