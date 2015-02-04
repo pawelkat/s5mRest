@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<json type="object">
+<flashcard xml:lang="de"><learning-data/><json type="object">
     <pair name="title" type="string">Muskelkater</pair>
     <pair name="id" type="number">1</pair>
     <pair name="formatVersion" type="number">2</pair>
@@ -30,4 +30,4 @@
         </pair>
     </pair>
     <pair name="links" type="array"/>
-</json>
+</json></flashcard>

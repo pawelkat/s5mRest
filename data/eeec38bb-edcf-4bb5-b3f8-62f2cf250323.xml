@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<json type="object">
-    <pair name="title" type="string">Pflichtenheft</pair>
-    <pair name="id" type="number">1</pair>
-    <pair name="formatVersion" type="number">2</pair>
-    <pair name="ideas" type="object">
-        <pair name="1" type="object">
-            <pair name="title" type="string">functional specification</pair>
-            <pair name="id" type="number">2</pair>
-        </pair>
-    </pair>
-</json>
+<flashcard xml:lang="de"><learning-data/><json type="object"><pair name="title" type="string">Pflichtenheft</pair><pair name="id" type="number">1</pair><pair name="formatVersion" type="number">2</pair><pair name="ideas" type="object"><pair name="1" type="object"><pair name="title" type="string">functional specification</pair><pair name="id" type="number">2</pair><pair name="attr" type="object"><pair name="icon" type="object"><pair name="url" type="string">http://t2.gstatic.com/images?q=tbn:ANd9GcSyvpR9dyYmHttGTUTTIc1K26tFiKMteW9MnUr0yJQg7RL273rLugwop2OpDw</pair><pair name="width" type="number">135</pair><pair name="height" type="number">135</pair><pair name="position" type="string">left</pair></pair><pair name="style" type="object"><pair name="background" type="string">#E0E0E0</pair></pair></pair></pair></pair></json></flashcard>
