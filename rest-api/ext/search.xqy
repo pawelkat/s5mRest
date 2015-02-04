@@ -24,7 +24,7 @@ function ext:get(
   return
     if ($query!="") then
       (
-          let $matched-json:=/json[//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", concat("lang=",$lang))))]]
+          let $matched-json:=/flashcard/json[//pair[@name="title"][cts:contains(., cts:word-query($query, ("stemmed", concat("lang=",$lang))))]]
           return
            document 
           {  
@@ -48,7 +48,7 @@ function ext:get(
         <ol id="selectable">
           {
           for $doc in fn:doc()
-            let $title:=$doc/json/pair[@name="title"]/text()
+            let $title:=$doc/flashcard/json/pair[@name="title"]/text()
             order by $title
             return
               <li title="{$title}" id="{xdmp:node-uri($doc)}">{$title}</li>    

@@ -19,7 +19,7 @@ function ext:get(
   let $uri := map:get($params, "uri")
   let $doc := document($uri)
   return
-    document { xqjson:serialize-json($doc/*) }
+    document { xqjson:serialize-json($doc/flashcard/json) }
 };
 
 (:
@@ -44,7 +44,7 @@ function ext:put(
     return
       if ($doc) then
       (
-        let $saved := xdmp:node-replace($doc/*, $contentXml)
+        let $saved := xdmp:node-replace($doc/flashcard/json, $contentXml)
         return
           (         
           document { '{"response" : "item '||$item-title||' saved"}' }
@@ -76,12 +76,14 @@ function ext:post(
 
   try{
     let $contentXml := xqjson:parse-json($input)
+    (:TODO: externalize xml lang:)
+    let $flashcardXml :=<flashcard xml:lang="de"><learning-data/>{$contentXml}</flashcard>
     let $item-title := $contentXml/pair[@name="title"]/text()
     let $doc-name := ext:generate-uuid-v4()
     return
         if ($item-title!="") then
           (
-            let $saved:= xdmp:document-insert("/"||$doc-name||".xml",$contentXml)
+            let $saved:= xdmp:document-insert("/"||$doc-name||".xml",$flashcardXml)
             return          
               document { '{"response" : "Document '||$doc-name||' created"}' }
           )
