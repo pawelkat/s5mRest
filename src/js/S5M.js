@@ -190,7 +190,7 @@ app={
 		else{
 			$.ajax(
 			{
-				url: itemEndpoint +"?rs:uri=" + currentUUID,
+				url: app.itemEndpoint +"?rs:uri=" + currentUUID,
 				type: 'Put',
 				contentType:'application/json',
 				data: JSON.stringify(saveIdea), 
