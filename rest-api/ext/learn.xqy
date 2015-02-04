@@ -3,7 +3,7 @@ xquery version "1.0-ml";
 module namespace ext = "http://marklogic.com/rest-api/resource/learn";
 
 declare namespace roxy = "http://marklogic.com/roxy";
-
+import module namespace xqjson = "http://xqilla.sourceforge.net/lib/xqjson" at "/modules/xqjson.xqy";
 (: 
  : To add parameters to the functions, specify them in the params annotations. 
  : Example
@@ -12,47 +12,93 @@ declare namespace roxy = "http://marklogic.com/roxy";
  :)
 
 (:
+  the endpoint returns the next Flashcard to learn. TODO: write the alghorithm to select one like in anymemo.org
  :)
 declare 
-%roxy:params("")
+%roxy:params("uri=xs:string")
 function ext:get(
   $context as map:map,
   $params  as map:map
 ) as document-node()*
 {
-  map:put($context, "output-types", "application/xml"),
+  map:put($context, "output-types", "application/json"),
   xdmp:set-response-code(200, "OK"),
-  document { "GET called on the ext service extension" }
+  try{
+    let $commitedFlashcards := /flashcard[learning-data]
+    let $nextFlashcard :=$commitedFlashcards[1]
+    let $uuid := xdmp:node-uri($nextFlashcard)
+    return
+      document { '{"uuid": "'||$uuid||'", "content" : '||xqjson:serialize-json($nextFlashcard/json)||'}' }
+   }
+  catch ($exception) {
+    document {'{"response" : "Problem commiting the item '|| $exception ||'}' }
+  }
 };
 
 (:
+  here the endpoint will add the 'flashcard to the learning process'POST DIDN'T WORK!
  :)
 declare 
-%roxy:params("")
+%roxy:params("uri=xs:string")
 function ext:put(
     $context as map:map,
     $params  as map:map,
     $input   as document-node()*
 ) as document-node()?
 {
-  map:put($context, "output-types", "application/xml"),
+  map:put($context, "output-types", "application/json"),
   xdmp:set-response-code(200, "OK"),
-  document { "PUT called on the ext service extension" }
+  try{
+    let $i := $input
+    let $uri := map:get($params, "uri")
+    let $doc := document($uri)
+    let $learn-node:= $doc/flashcard/learning-data
+    let $init-learn-data :=
+      <learning-data>
+        <date-commited>{fn:current-dateTime()}</date-commited>
+      </learning-data>
+    return
+    (
+      xdmp:node-replace($learn-node, $init-learn-data),
+      document { '{"response" : "item added to the learning process"}' }
+    )
+  }
+  catch ($exception) {
+    document {'{"response" : "Problem commiting the item '|| $exception ||'}' }
+  }
 };
 
 (:
+  here the endpoint will add the 'flashcard to the learning process'
  :)
 declare 
-%roxy:params("")
+%roxy:params("uri=xs:string")
 function ext:post(
     $context as map:map,
     $params  as map:map,
     $input   as document-node()*
 ) as document-node()*
 {
-  map:put($context, "output-types", "application/xml"),
+  map:put($context, "output-types", "application/json"),
   xdmp:set-response-code(200, "OK"),
-  document { "POST called on the ext service extension" }
+  try{
+    let $i := $input
+    let $uri := map:get($params, "uri")
+    let $doc := document($uri)
+    let $learn-node:= $doc/flashcard/learning-data
+    let $init-learn-data :=
+      <learning-data>
+        <date-commited>{fn:current-dateTime()}</date-commited>
+      </learning-data>
+    return
+    (
+      xdmp:node-replace($learn-node, $init-learn-data),
+      document { '{"response" : "item added to the learning process"}' }
+    )
+  }
+  catch ($exception) {
+    document {'{"response" : "Problem commiting the item '|| $exception ||'}' }
+  }
 };
 
 (:
