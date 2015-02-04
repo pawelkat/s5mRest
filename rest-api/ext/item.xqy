@@ -18,8 +18,9 @@ function ext:get(
   xdmp:set-response-code(200, "OK"),
   let $uri := map:get($params, "uri")
   let $doc := document($uri)
+  let $commited := if($doc/flashcard/learning-data/*) then 'true' else 'false'
   return
-    document { xqjson:serialize-json($doc/flashcard/json) }
+    document { '{"commited": '||$commited||', "content" : '||xqjson:serialize-json($doc/flashcard/json)||'}' }
 };
 
 (:
