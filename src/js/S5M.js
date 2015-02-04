@@ -60,6 +60,10 @@ $(document).ready(function() {
 		); 
 		button = $("#setGoogleIcon").button();
 			button.click(app.setGoogleIcon);
+			
+		button = $("#commit").button();
+		button.hide()
+			button.click(app.commitItem);
 		//
 		$("#searchBox").keyup(function(e){
 			if(e.keyCode == 13)
@@ -106,7 +110,11 @@ app={
 				},
 				async: false,
 				success: function(bindings) {
-					 json = bindings;    
+					json = bindings.content;
+					if(bindings.commited==false)
+						$("#commit").show();
+					else
+						$("#commit").hide();
 				}
 			} 
 		);
@@ -286,6 +294,25 @@ app={
 			}
 		});
 		
+	},
+	commitItem: function(){
+		var json;
+		$.ajax(
+			{
+				url: "v1/resources/learn?rs:uri=" + currentUUID,
+				dataType: 'json',
+				type: 'Put',
+				data: currentUUID, 
+				accepts: {
+					text: "application/json"
+				},
+				async: false,
+				success: function(data) {
+					$("#commit").hide();
+					app.message(data.response);
+				}
+			} 
+		);
 	},
 	
 	onIdeaChanged: function(){
