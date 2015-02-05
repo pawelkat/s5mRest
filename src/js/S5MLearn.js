@@ -1,5 +1,6 @@
 
 var currentIdeaChanged = false;
+var currentUUID;
 var stack_bottomright = {"dir1": "up", "dir2": "left", "firstpos1": 15, "firstpos2": 15};
 var mModel;
 $(document).ready(function() {
@@ -11,6 +12,37 @@ $(document).ready(function() {
 		mapModel = new MAPJS.MapModel(MAPJS.KineticMediator.layoutCalculator, ['A brilliant idea...', 'A cunning plan...', 'We\'ll be famous...'], ['hoo har']);
 		container.mapWidget(console,mapModel, isTouch, renderImages);
 		mModel=mapModel;
+		//initialize buttons
+		var button = $("#grade-noidea").button();
+		button.click(
+			function(){
+				app.gradeItem(1);
+			}
+		);	
+		button = $("#grade-poor").button();
+		button.click(
+			function(){
+				app.gradeItem(2);
+			}
+		);
+		button = $("#grade-ok").button();
+		button.click(
+			function(){
+				app.gradeItem(3);
+			}
+		);
+		button = $("#grade-good").button();
+		button.click(
+			function(){
+				app.gradeItem(4);
+			}
+		);		
+		button = $("#grade-perfect").button();
+		button.click(
+			function(){
+				app.gradeItem(5);
+			}
+		);
 		app.nextFlashcard();
 
 });
@@ -29,152 +61,29 @@ app={
 				async: false,
 				success: function(bindings) {
 					json = bindings.content;
+					currentUUID = bindings.uuid;
 				}
 			} 
 		);
 		idea = MAPJS.content(json);
 		mModel.setIdea(idea);
 	},
-	getMapItems: function() {
-		var htm;
-		$.ajax(
-		{
-			url: "v1/resources/search",
-			dataType: 'html',
-			data: {
-				tableId: "jsonID"
-			},
-			accepts: {
-				text: "application/xml"
-			},
-			async: false,
-			success: function(bindings) {
-				htm = bindings; 
-				$("#itemList").html(htm);
-				$("#itemList ol").selectable({
-					selected:function(){
-						var selId=$('#selectable .ui-selected').attr('id');
-						if(currentIdeaChanged==true){
-							$("#dialog-confirm-close").dialog({
-								appendTo: "#layout-container",
-								resizable: false,
-								height:140,
-								modal: true,
-								buttons: {
-									"Close": function() {
-										$( this ).dialog( "close" );
-										currentIdeaChanged = false;
-										app.openMapItem(selId);
-									},
-									Cancel: function() {
-										$( this ).dialog( "close" );
-									}
-								},
-								open: function() { 
-									$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(0)').focus(); 
-									$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:eq(1)').blur(); 
-								}
-							});
-						}else{
-							app.openMapItem(selId);
-						}
-					}
-				});				 
-			}
-		});
-		
-	},
-	
-	saveMapItem: function() {		
-		var saveIdea = mapModel.getIdea()
-		if (currentUUID==null){
-			$.ajax(
-				{
-					url: app.itemEndpoint,
-					dataType: 'json',
-					type: 'POST',
-					contentType:'application/json',
-					data: JSON.stringify(saveIdea), 
-					dataType:'json',
-					success: function (data) {
-						app.message(data.response);
-						app.getMapItems();
-						currentUUID = data.response;
-						currentIdeaChanged = false;
-					},
-					error: function (data) {
-						app.message(data.response);
-					}
-				} 
-			);
-		}
-		else{
-			$.ajax(
-			{
-				url: app.itemEndpoint +"?rs:uri=" + currentUUID,
-				type: 'Put',
-				contentType:'application/json',
-				data: JSON.stringify(saveIdea), 
-				dataType:'json',
-				success: function (data) {
-					app.message(data.response);
-					currentIdeaChanged = false;
-				},
-				error: function (data) {
-					app.message(data.response);
-				}
-			});
-		}
-	},
-			
-	deleteMapItem: function() {
-		if (currentUUID!=null) {
-			//trying to find next item if not found select the first one
-			var nextItemId=$('#selectable .ui-selected').next().attr('id');
-			if(nextItemId==null){
-				nextItemId=$('#selectable li').first().attr('id');
-			}
-			
-			$.ajax(
-			{
-				url: app.itemEndpoint + "?rs:uri=" + currentUUID,
-				contentType:'application/json',
-				type: 'Delete',
-				dataType:'json',
-				success: function (data) {
-					app.message(data.response);
-					app.getMapItems();
-					//opening next available mapItem or the first one (selected above) if available. return new item if list is empty 
-					if(nextItemId!=null){
-						app.openMapItem(nextItemId);
-						$("li[id='"+nextItemId+"']").addClass('ui-selected');
-					}else{
-						app.newMapItem;
-					}
-				},
-				error: function (data) {
-					app.message(data.response);
-				}
-			});
-		}
-	},
 	
 
-	commitItem: function(){
-		var json;
+	gradeItem: function(grade){
 		$.ajax(
 			{
-				url: "v1/resources/learn?rs:uri=" + currentUUID,
+				url: "v1/resources/learn?rs:uri=" + currentUUID + "&rs:grade=" + grade,
 				dataType: 'json',
 				type: 'Put',
-				data: currentUUID, 
+				data: grade, 
 				accepts: {
 					text: "application/json"
 				},
 				async: false,
 				success: function(data) {
-					$("#commit").hide();
 					app.message(data.response);
+					app.nextFlashcard();
 				}
 			} 
 		);

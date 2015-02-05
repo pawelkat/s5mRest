@@ -25,7 +25,13 @@ function ext:get(
   xdmp:set-response-code(200, "OK"),
   try{
     let $commitedFlashcards := /flashcard[learning-data]
-    let $nextFlashcard :=$commitedFlashcards[1]
+    let $cardsToRepeat := 
+      for $card in $commitedFlashcards
+        let $next-repeat :=xs:dateTime($card/learning-data/date-next-repeat/text())
+        order by $next-repeat
+        return
+          $card
+    let $nextFlashcard :=$cardsToRepeat[1]
     let $uuid := xdmp:node-uri($nextFlashcard)
     return
       document { '{"uuid": "'||$uuid||'", "content" : '||xqjson:serialize-json($nextFlashcard/json)||'}' }
@@ -49,25 +55,45 @@ function ext:put(
   map:put($context, "output-types", "application/json"),
   xdmp:set-response-code(200, "OK"),
   try{
-    let $i := $input
     let $uri := map:get($params, "uri")
+    let $grade := map:get($params, "grade")
     let $doc := document($uri)
     let $learn-node:= $doc/flashcard/learning-data
-    let $init-learn-data :=
-      <learning-data>
-        <date-commited>{fn:current-dateTime()}</date-commited>
-      </learning-data>
     return
-    (
-      xdmp:node-replace($learn-node, $init-learn-data),
-      document { '{"response" : "item added to the learning process"}' }
-    )
+      if($learn-node/*) then
+        ext:grade($uri, $grade, $learn-node)
+      else
+        ext:commit($uri, $learn-node)
   }
   catch ($exception) {
     document {'{"response" : "Problem commiting the item '|| $exception ||'}' }
   }
 };
-
+(:naive implementation of grading function:)
+declare function ext:grade($uri, $grade, $learn-node){
+  let $init-learn-data :=
+      <learning-data>
+        <date-commited>{fn:current-dateTime()}</date-commited>        
+        <date-next-repeat>{fn:current-dateTime() + xs:dayTimeDuration("PT24H")}</date-next-repeat>
+      </learning-data>
+  return
+  (
+    xdmp:node-replace($learn-node, $init-learn-data),
+    document { '{"response" : "item: grade '||$grade||'"}' }
+  )
+};
+declare function ext:commit($uri, $learn-node){
+  let $init-learn-data :=
+      <learning-data>
+        <date-commited>{fn:current-dateTime()}</date-commited>
+        <date-next-repeat>{fn:current-dateTime() + xs:dayTimeDuration("PT24H")}</date-next-repeat>
+      </learning-data>
+  return
+  (
+    xdmp:node-replace($learn-node, $init-learn-data),
+    document { '{"response" : "item added to the learning process"}' }
+  )
+};
 (:
   here the endpoint will add the 'flashcard to the learning process'
  :)
