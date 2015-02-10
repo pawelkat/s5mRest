@@ -70,6 +70,7 @@ app={
 		);
 		idea = MAPJS.content(json);
 		mModel.setIdea(idea);
+		app.toggleQuestionAnswer();
 	},
 	
 
@@ -90,6 +91,10 @@ app={
 				}
 			} 
 		);
+	},
+
+	toggleQuestionAnswer: function(){
+		mModel.toggleCollapse(null);
 	},
 	
 	onIdeaChanged: function(){
