@@ -13,6 +13,9 @@ import module namespace xqjson = "http://xqilla.sourceforge.net/lib/xqjson" at "
 
 (:
   the endpoint returns the next Flashcard to learn. TODO: write the alghorithm to select one like in anymemo.org
+  CREATE TABLE `learning_data` (`acqReps` INTEGER , `acqRepsSinceLapse` INTEGER , `easiness` FLOAT DEFAULT 2.5 , `grade` INTEGER , 
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT , `lapses` INTEGER , `lastLearnDate` VARCHAR DEFAULT '2010-01-01 00:00:00.000000' , 
+  `nextLearnDate` VARCHAR DEFAULT '2010-01-01 00:00:00.000000' , `retReps` INTEGER , `retRepsSinceLapse` INTEGER , `updateDate` VARCHAR )
  :)
 declare 
 %roxy:params("uri=xs:string")
@@ -69,23 +72,44 @@ function ext:put(
     document {'{"response" : "Problem commiting the item '|| $exception ||'}' }
   }
 };
-(:naive implementation of grading function:)
-declare function ext:grade($uri, $grade, $learn-node){
-  let $init-learn-data :=
-      <learning-data>
-        <date-commited>{fn:current-dateTime()}</date-commited>        
+(:naive implementation of grading function
+
+ CREATE TABLE `learning_data` (`acqReps` INTEGER , `acqRepsSinceLapse` INTEGER , `easiness` FLOAT DEFAULT 2.5 , `grade` INTEGER , 
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT , `lapses` INTEGER , `lastLearnDate` VARCHAR DEFAULT '2010-01-01 00:00:00.000000' , 
+  `nextLearnDate` VARCHAR DEFAULT '2010-01-01 00:00:00.000000' , `retReps` INTEGER , `retRepsSinceLapse` INTEGER , `updateDate` VARCHAR )
+    <learn-history/>,
+        <easiness/>,
+        <grade></grade>,,
+             
         <date-next-repeat>{fn:current-dateTime() + xs:dayTimeDuration("PT24H")}</date-next-repeat>
-      </learning-data>
+  :)
+declare function ext:grade($uri, $grade, $learn-node){
+  let $learn-history:=$learn-node/learn-history/repeat
+  let $last-lapse:= $learn-history[@grade=0][last()]
+  let $easiness := 2
+  let $date-next-repeat := fn:current-dateTime() + xs:dayTimeDuration("PT24H")
+  let $current-learn-data :=
+      element learning-data {
+        $learn-node/date-commited,
+        element learn-history{
+          $learn-node/learn-history/*, element repeat{ attribute date{fn:current-dateTime()}, attribute grade{$grade}}
+        },
+        element date-next-repeat {$date-next-repeat},
+        element last-lapse {$last-lapse}
+      }
   return
   (
-    xdmp:node-replace($learn-node, $init-learn-data),
+    xdmp:node-replace($learn-node, $current-learn-data),
     document { '{"response" : "item: grade '||$grade||'"}' }
   )
 };
+
+
 declare function ext:commit($uri, $learn-node){
   let $init-learn-data :=
       <learning-data>
         <date-commited>{fn:current-dateTime()}</date-commited>
+        <easiness>2.5</easiness>
         <date-next-repeat>{fn:current-dateTime() + xs:dayTimeDuration("PT24H")}</date-next-repeat>
       </learning-data>
   return
