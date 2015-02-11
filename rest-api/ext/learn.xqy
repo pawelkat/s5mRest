@@ -151,8 +151,7 @@ declare function ext:get-new-interval($learn-node, $grade as xs:integer){
   let $learn-history:=$learn-node/learn-history/repeat
   let $last-grade:= xs:integer($learn-history[last()]/@grade)
   let $last-lapse:= $learn-history[@grade=0][last()]
-  let $last-lapse-position:= $last-lapse/count(preceding-sibling::*) + 1
-  let $retention-reps-since-lapse:=$learn-history[position()>$last-lapse-position]
+  let $retention-reps-since-lapse:=$last-lapse/following-sibling::repeat
   return
     if ($last-grade = (0,1) and $grade = (0,1)) then 0
     else 
