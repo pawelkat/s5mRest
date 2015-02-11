@@ -39,7 +39,7 @@
     <script type="text/javascript" src="js/S5MLearn.js"></script>
   </head>
   <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
       <div class="navbar-header">
         <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -73,21 +73,23 @@
           </span>-->
         </span>
       </div>
+
       <div id="container"><!-- here comes the MindMup --></div>
       <div class="col-sm-9 col-md-10">
-        <span id="toolbar">    
+        <span id="toolbar"> 
+          <p id="cardCounter">Cards to repeat</p>   
           <span class="toolbar-buttons">
+            <button id="grade-forget" style="background-color: red">forget</button>
             <button id="grade-noidea" style="background-color: red">no idea</button>
             <button id="grade-poor" style="background-color: blue">poor</button>
             <button id="grade-ok" style="background-color: blue">ok</button>
             <button id="grade-good" style="background-color: green">good</button>
             <button id="grade-perfect" style="background-color: green">perfect</button>
+             
           </span>
         </span>
       </div>  
     </div>
-    
-    
     </div>    
   </body>
 </html>
