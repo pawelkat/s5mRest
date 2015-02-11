@@ -16,7 +16,13 @@ $(document).ready(function() {
 		//making map content read-only
 		mModel.setEditingEnabled(false);
 		//initialize buttons
-		var button = $("#grade-noidea").button();
+		var button = $("#grade-forget").button();
+		button.click(
+			function(){
+				app.gradeItem(0);
+			}
+		);
+		button = $("#grade-noidea").button();
 		button.click(
 			function(){
 				app.gradeItem(1);
@@ -65,19 +71,23 @@ app={
 				success: function(bindings) {
 					json = bindings.content;
 					currentUUID = bindings.uuid;
+					var countCardsToRepeat = bindings.countCardsToRepeat
+					var htm ="<span>Cards to repeat: " + countCardsToRepeat +"</span>";
+					$("#cardCounter").html(htm);
+					idea = MAPJS.content(json);
+					mModel.setIdea(idea);
+					app.toggleQuestionAnswer();
 				}
 			} 
 		);
-		idea = MAPJS.content(json);
-		mModel.setIdea(idea);
-		app.toggleQuestionAnswer();
+
 	},
 	
 
 	gradeItem: function(grade){
 		$.ajax(
 			{
-				url: "v1/resources/learn?rs:uri=" + currentUUID + "&rs:grade=" + grade,
+				url: app.itemEndpoint+"?rs:uri=" + currentUUID + "&rs:grade=" + grade,
 				dataType: 'json',
 				type: 'Put',
 				data: grade, 
