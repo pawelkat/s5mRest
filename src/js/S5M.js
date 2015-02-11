@@ -78,8 +78,7 @@ $(document).ready(function() {
 		});
 		$(".toolbar-buttons").buttonset();
 		app.getMapItems();
-		var firstItemId=$('#selectable li').first().attr('id');
-		app.openMapItem(firstItemId);
+
 	}());
 
 });
@@ -128,13 +127,9 @@ app={
 		{
 			url: "v1/resources/search",
 			dataType: 'html',
-			data: {
-				tableId: "jsonID"
-			},
 			accepts: {
 				text: "application/xml"
 			},
-			async: false,
 			success: function(bindings) {
 				htm = bindings; 
 				$("#itemList").html(htm);
@@ -166,10 +161,12 @@ app={
 							app.openMapItem(selId);
 						}
 					}
-				});				 
-			}
+				});	
+				var firstItemId=$('#selectable li').first().attr('id');
+				app.openMapItem(firstItemId);			 
+			}			
 		});
-		
+
 	},
 	
 	saveMapItem: function() {		
@@ -247,7 +244,7 @@ app={
 	},
 	
 	search: function(query){
-				var htm;
+		var htm;
 		$.ajax(
 		{
 			url: "v1/resources/search",
@@ -259,6 +256,7 @@ app={
 			accepts: {
 				text: "application/xml"
 			},
+			async: false,
 			success: function(bindings) {
 				 htm = bindings; 
 				$("#itemList").html(htm);
