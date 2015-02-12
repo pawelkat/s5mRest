@@ -22,7 +22,7 @@ with roxy:
 - ml local deploy content
 
 ### TODO:
--  Tune the advanced adaptive scheduling algorithm based on modified Mnemosyne algorithm. http://www.supermemo.com/help/smalg.htm http://mnemosyne-proj.org/help/getting-started.php. http://nihongoperapera.com/spacing-algorithm-reviews.html. https://github.com/dae/anki  https://github.com/stephenbez/memizr/blob/master/spacedRepetition/flashcards/models.py https://stevebezek.wordpress.com/2011/01/30/announcing-memizr/
+-  Tune the advanced adaptive scheduling algorithm based on modified Mnemosyne algorithm. http://www.supermemo.com/english/algsm11.htm http://www.supermemo.com/help/smalg.htm http://mnemosyne-proj.org/help/getting-started.php. http://nihongoperapera.com/spacing-algorithm-reviews.html. https://github.com/dae/anki  https://github.com/stephenbez/memizr/blob/master/spacedRepetition/flashcards/models.py https://stevebezek.wordpress.com/2011/01/30/announcing-memizr/
 - Flashcard statistics (learn.html)
 - (optional) textual analysis of topically similar cards (tf-idf), in order to propose the card that could be the continuation of the started topic (in drill mode) to have even more associations!
 - Backup/restore/import (from Anymemo)
